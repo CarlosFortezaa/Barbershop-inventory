@@ -1,15 +1,20 @@
 <?php
 class Database
 {
-    private static $dsn = getenv('DB_DSN');
-    private static $username = getenv('DB_USERNAME');
-    private static $password = getenv('DB_PASSWORD');
-    private static $db; 
+
+    private static $dsn;
+    private static $username;
+    private static $password;
+    private static $db;
 
     public static function getDB(){
+        if(!isset(self::$dsn)){
+            self::$dsn = getenv('DB_DSN');
+            self::$username = getenv('DB_USERNAME');
+            self::$password = getenv('DB_PASSWORD');
+        }
         // Si la conexión aún no ha sido creada
         if (!isset(self::$db)) {
-
             try {
                 // Creando la instancia PDO usando el DSN, el usuario y la contraseña
                 self::$db = new PDO(self::$dsn, self::$username, self::$password);

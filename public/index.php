@@ -4,6 +4,26 @@ POR EL MOMENTO SE VA A PONER ASI: "/index.php?action=index" EL ACTION UNO LO DEF
 POR EJEMPLO COMO AQUI: <form action="index.php?action=create_product" method="post" enctype="multipart/form-data"> <!-- enctype es para poder subir archivos --> */
 session_start();
 
+/* LOAD ENV FIRST */
+$envPath = __DIR__ . '/../.env';
+
+if (file_exists($envPath)) {
+    $lines = file($envPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+    foreach ($lines as $line) {
+        if (strpos($line, '=') === false) continue;
+
+        list($key, $value) = explode('=', $line, 2);
+
+        $key = trim($key);
+        $value = trim($value);
+
+        putenv("$key=$value");
+        $_ENV[$key] = $value;
+        $_SERVER[$key] = $value;
+    }
+}
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -493,12 +513,12 @@ switch ($action) {
                     try {
                         // Server settings
                         $mail->isSMTP();
-                        $mail->Host       = 'smtp.gmail.com';
+                        $mail->Host       = getenv('MAILER_HOST');
                         $mail->SMTPAuth   = true;
-                        $mail->Username   = 'oportunihub@gmail.com';
-                        $mail->Password   = 'lrjcepxfzojykdwx';
+                        $mail->Username   = getenv('MAILER_USERNAME');
+                        $mail->Password   = getenv('MAILER_PASSWORD');
                         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                        $mail->Port       = 587;
+                        $mail->Port       = getenv('MAILER_PORT');
 
                         // Recipients
                         $mail->setFrom('oportunihub@gmail.com', 'OportuniHub');
