@@ -1,1 +1,2 @@
 "# Barbershop-inventory" 
+"# Barbershop-inventory" 
