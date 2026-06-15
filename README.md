@@ -38,7 +38,7 @@ Developed as a team project using PHP, MySQL, HTML, and CSS, focusing on databas
 
 ## Project Purpose
 
-This system was built to simulate a real-world inventory management solution for a barber shop. Focusing on improving stock control, reducing shortages, and automating inventory tracking processes.
+This system was built to simulate a real-world inventory management solution for a barber shop, focusing on improving stock control, reducing shortages, and automating inventory tracking processes.
 
 ## Inventory Structure
 
@@ -82,7 +82,7 @@ The system uses a single authorized administrator account. User registration is 
   <img width="2498" height="1263" alt="image" src="https://github.com/user-attachments/assets/776269b5-27d8-4380-965c-80c9c3ccf6c8" />
 
 ### Inventory Movements
-  Logs and tracks all stock changes made to product in the system.
+  Logs and tracks all stock changes made to products in the system.
   <img width="2500" height="1259" alt="image" src="https://github.com/user-attachments/assets/f1286ea7-14aa-4269-a847-de051a3a89a7" />
 
 
